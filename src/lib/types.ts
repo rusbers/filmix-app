@@ -19,6 +19,7 @@ export type ShowItem = Prisma.ShowItemGetPayload<{
     bookmarks: true;
     likes: true;
     dislikes: true;
+    status: true;
   };
 }>;
 

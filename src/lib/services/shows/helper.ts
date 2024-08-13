@@ -38,5 +38,6 @@ export function parseShows(shows: ShowItem[]) {
         return null;
       }
     })
-    .filter((show) => show !== null);
+    .filter((show) => show !== null)
+    .filter((show) => show.status === "active");
 }
