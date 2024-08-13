@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply max-w-screen-2xl px-4 lg:mx-auto lg:px-6;
+  }
+  .container-none {
+    @apply mx-0 max-w-none p-0 lg:p-0;
+  }
+
+  .heading-4XS {
+    @apply text-[.875rem]/[1.125rem] font-medium text-inherit;
+  }
+
+  .heading-3XS {
+    @apply text-[.9375rem]/[1.1875rem] font-medium text-inherit;
+  }
+
+  .heading-2XS {
+    @apply text-[1.25rem] leading-6 tracking-[-0.0187rem];
+  }
+
+  .heading-XS {
+    @apply text-lg font-medium text-inherit;
+  }
+  .heading-S {
+    @apply text-2xl font-medium text-inherit;
+  }
+  .heading-M {
+    @apply text-2xl font-light text-inherit;
+  }
+  .heading-L {
+    @apply text-[2rem] font-light leading-10 tracking-tight text-inherit;
+  }
+
+  .body-XS {
+    @apply text-[.6875rem]/[.875rem] font-light text-inherit;
+  }
+  .body-S {
+    @apply text-[.75rem]/[.9375rem] font-light text-inherit;
+  }
+
+  .body-M {
+    @apply text-[.8125rem]/[1rem] font-light text-white/75;
+  }
+  .body-L {
+    @apply text-[.9375rem]/[1.1875rem] font-light text-inherit;
+  }
+
+  .input {
+    @apply border-b-2 border-b-app-greyish-blue bg-transparent font-light text-inherit caret-app-red placeholder:font-light placeholder:text-white/50;
+  }
+
+  .app-button {
+    @apply bg-app-red text-xl text-white hover:bg-white hover:text-app-semidark-blue disabled:opacity-50 disabled:hover:bg-app-red disabled:hover:text-white !important;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* SCROLLBAR STYLING */
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161d2f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #10141e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #10141e;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #161d2f #10141e;
+}

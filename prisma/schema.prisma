@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// USER
+
+model User {
+  id              String            @id @default(cuid())
+  email           String            @unique
+  hashedPassword  String
+  role            String
+  bookmarkedShows BookmarkedShows[]
+  likedShows      LikedShows[]
+  dislikedShows   DislikedShows[]
+  userDetails     UserDetails       @relation(fields: [userDetailsId], references: [id])
+  updatedAt       DateTime          @updatedAt
+  createdAt       DateTime          @default(now())
+
+  userDetailsId String @unique
+}
+
+model UserDetails {
+  id       String  @id @default(cuid())
+  name     String
+  lastName String
+  avatarId String?
+  user     User?   @relation
+}
+
+// === SHOW ITEM ===
+
+model ShowItem {
+  id          String            @id @default(cuid())
+  title       String
+  year        Int
+  category    String
+  rating      String
+  isTrending  Boolean
+  thumbnailId String
+  // Active | Draft | Archived
+  status      String
+  bookmarks   BookmarkedShows[]
+  likes       LikedShows[]
+  dislikes    DislikedShows[]
+  thumbnail   Thumbnail         @relation(fields: [thumbnailId], references: [id])
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+// === THUMBNAILS ===
+
+model Thumbnail {
+  id         String  @id @default(cuid())
+  regularId  String
+  trendingId String?
+
+  ShowItem ShowItem[]
+  regular  Regular    @relation(fields: [regularId], references: [id])
+  trending Trending?  @relation(fields: [trendingId], references: [id])
+}
+
+// TODO rename to: RegularThumbnail
+model Regular {
+  id     String @id @default(cuid())
+  small  String
+  medium String
+  large  String
+
+  Thumbnail Thumbnail[]
+}
+
+// TODO rename to: TrendingThumbnail
+model Trending {
+  id    String @id @default(cuid())
+  small String
+  large String
+
+  Thumbnail Thumbnail[]
+}
+
+// === LIKED, DISLIKED AND  BOOKMARKED SHOWS ===
+
+model LikedShows {
+  id         String @id @default(cuid())
+  userId     String
+  showItemId String
+
+  user     User     @relation(fields: [userId], references: [id])
+  showItem ShowItem @relation(fields: [showItemId], references: [id])
+
+  @@unique([userId, showItemId])
+}
+
+model DislikedShows {
+  id         String @id @default(cuid())
+  userId     String
+  showItemId String
+
+  user     User     @relation(fields: [userId], references: [id])
+  showItem ShowItem @relation(fields: [showItemId], references: [id])
+
+  @@unique([userId, showItemId])
+}
+
+model BookmarkedShows {
+  id         String @id @default(cuid())
+  userId     String
+  showItemId String
+
+  user     User     @relation(fields: [userId], references: [id])
+  showItem ShowItem @relation(fields: [showItemId], references: [id])
+
+  @@unique([userId, showItemId])
+}

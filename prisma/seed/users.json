@@ -1,0 +1,41 @@
+[
+  {
+    "email": "user1@example.com",
+    "hashedPassword": "12345678",
+    "role": "user",
+    "userDetails": {
+      "name": "John",
+      "lastName": "Smith",
+      "avatarId": null
+    },
+    "likedShows": [],
+    "dislikedShows": [],
+    "bookmarkedShows": []
+  },
+  {
+    "email": "user2@example.com",
+    "hashedPassword": "12345678",
+    "role": "user",
+    "userDetails": {
+      "name": "Fabio",
+      "lastName": "Freeman",
+      "avatarId": null
+    },
+    "likedShows": [],
+    "dislikedShows": [],
+    "bookmarkedShows": []
+  },
+  {
+    "email": "admin@example.com",
+    "hashedPassword": "12345678",
+    "role": "admin",
+    "userDetails": {
+      "name": "Ruslan",
+      "lastName": "Berendeev",
+      "avatarId": null
+    },
+    "likedShows": [],
+    "dislikedShows": [],
+    "bookmarkedShows": []
+  }
+]
