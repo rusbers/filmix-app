@@ -12,7 +12,6 @@
 5. [Test Credentials](#test-credentials)
 6. [Tech Stack](#tech-stack)
 7. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
    - [Installation](#installation)
 8. [Deployment](#deployment)
 9. [Future Improvements](#future-improvements)
