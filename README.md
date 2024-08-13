@@ -17,10 +17,6 @@
 9. [Future Improvements](#future-improvements)
 10. [Contribution](#contribution)
 
----
-
-# 🎥 Filmix - Entertainment Web App
-
 ## Overview
 
 **Filmix** is a full-stack, multi-page platform designed for users to explore and manage their favorite movies and TV series. The app allows users to navigate through various sections, bookmark shows, and manage their profiles. It also includes an admin dashboard for managing content and users.
