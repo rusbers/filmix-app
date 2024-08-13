@@ -1,6 +1,7 @@
 import { ShowCategory } from "@/lib/types";
 import { fetchShows } from "./helper";
 import { unstable_cache as cache } from "next/cache";
+import { Prisma } from "@prisma/client";
 
 export const fetchShowsByCategory = cache(
   async ({
@@ -13,6 +14,7 @@ export const fetchShowsByCategory = cache(
     return fetchShows({
       title: {
         contains: query,
+        mode: Prisma.QueryMode.insensitive,
       },
       category,
     });
@@ -24,6 +26,7 @@ export const fetchRecommendedShows = cache(
     return fetchShows({
       title: {
         contains: query,
+        mode: Prisma.QueryMode.insensitive,
       },
       isTrending: false,
     });
@@ -48,6 +51,7 @@ export const fetchBookmarkedShows = cache(
       },
       title: {
         contains: query,
+        mode: Prisma.QueryMode.insensitive,
       },
       category,
     });

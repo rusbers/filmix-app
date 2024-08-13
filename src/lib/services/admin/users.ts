@@ -1,6 +1,7 @@
 import { User } from "@/lib/types";
 import prisma from "@/lib/db";
 import { unstable_cache as cache } from "next/cache";
+import { Prisma } from "@prisma/client";
 
 export const fetchUsers = cache(
   async ({
@@ -26,6 +27,7 @@ export const fetchUsers = cache(
           userDetails: {
             name: {
               contains: part,
+              mode: Prisma.QueryMode.insensitive,
             },
           },
         },
@@ -33,12 +35,14 @@ export const fetchUsers = cache(
           userDetails: {
             lastName: {
               contains: part,
+              mode: Prisma.QueryMode.insensitive,
             },
           },
         },
         {
           email: {
             contains: part,
+            mode: Prisma.QueryMode.insensitive,
           },
         },
       ],

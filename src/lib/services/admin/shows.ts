@@ -1,6 +1,7 @@
 import { ShowItem, ShowStatuses } from "@/lib/types";
 import prisma from "@/lib/db";
 import { unstable_cache as cache } from "next/cache";
+import { Prisma } from "@prisma/client";
 
 export const fetchShows = cache(
   async ({
@@ -21,9 +22,14 @@ export const fetchShows = cache(
     let where = {};
 
     if (query && status && status !== "all") {
-      where = { title: { contains: query }, status };
+      where = {
+        title: { contains: query, mode: Prisma.QueryMode.insensitive },
+        status,
+      };
     } else if (query) {
-      where = { title: { contains: query } };
+      where = {
+        title: { contains: query, mode: Prisma.QueryMode.insensitive },
+      };
     } else if (status && status !== "all") {
       where = { status };
     }
